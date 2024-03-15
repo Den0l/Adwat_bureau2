@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Adwat_bureauModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ID_Client" />
+    </Key>
+    <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClientMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="СourtСases" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Lawyer" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Clients" ToRole="Lawyer" />
+  </EntityType>
+  <EntityType Name="Lawyer">
+    <Key>
+      <PropertyRef Name="ID_Lawyer" />
+    </Key>
+    <Property Name="ID_Lawyer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LawyerSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LawyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LawyerMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Seniority" Type="Int32" Nullable="false" />
+    <Property Name="DiplomaUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Client_ID" Type="Int32" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Lawyer" ToRole="Clients" />
+  </EntityType>
+  <Association Name="FK__Lawyer__Client_I__52593CB8">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="Lawyer" Type="Self.Lawyer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ID_Client" />
+      </Principal>
+      <Dependent Role="Lawyer">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Adwat_bureauEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="Self.Clients" />
+    <EntitySet Name="Lawyer" EntityType="Self.Lawyer" />
+    <AssociationSet Name="FK__Lawyer__Client_I__52593CB8" Association="Self.FK__Lawyer__Client_I__52593CB8">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Lawyer" EntitySet="Lawyer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

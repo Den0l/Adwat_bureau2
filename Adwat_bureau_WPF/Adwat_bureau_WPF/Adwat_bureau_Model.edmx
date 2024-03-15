@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Adwat_bureauModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientSurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientMiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="СourtСases" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lawyer">
+          <Key>
+            <PropertyRef Name="ID_Lawyer" />
+          </Key>
+          <Property Name="ID_Lawyer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LawyerSurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LawyerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LawyerMiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="Seniority" Type="int" Nullable="false" />
+          <Property Name="DiplomaUniversity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Client_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Lawyer__Client_I__52593CB8">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Lawyer" Type="Self.Lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Lawyer">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Adwat_bureauModelContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lawyer" EntityType="Self.Lawyer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Lawyer__Client_I__52593CB8" Association="Self.FK__Lawyer__Client_I__52593CB8">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Lawyer" EntitySet="Lawyer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Adwat_bureauModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="СourtСases" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Lawyer" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Clients" ToRole="Lawyer" />
+        </EntityType>
+        <EntityType Name="Lawyer">
+          <Key>
+            <PropertyRef Name="ID_Lawyer" />
+          </Key>
+          <Property Name="ID_Lawyer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LawyerSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LawyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LawyerMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Seniority" Type="Int32" Nullable="false" />
+          <Property Name="DiplomaUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Client_ID" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Lawyer" ToRole="Clients" />
+        </EntityType>
+        <Association Name="FK__Lawyer__Client_I__52593CB8">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Lawyer" Type="Self.Lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="ID_Client" />
+            </Principal>
+            <Dependent Role="Lawyer">
+              <PropertyRef Name="Client_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Adwat_bureauEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Lawyer" EntityType="Self.Lawyer" />
+          <AssociationSet Name="FK__Lawyer__Client_I__52593CB8" Association="Self.FK__Lawyer__Client_I__52593CB8">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Lawyer" EntitySet="Lawyer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Adwat_bureauModelContainer" CdmEntityContainer="Adwat_bureauEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Adwat_bureauModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+                <ScalarProperty Name="СourtСases" ColumnName="СourtСases" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lawyer">
+            <EntityTypeMapping TypeName="Adwat_bureauModel.Lawyer">
+              <MappingFragment StoreEntitySet="Lawyer">
+                <ScalarProperty Name="ID_Lawyer" ColumnName="ID_Lawyer" />
+                <ScalarProperty Name="LawyerSurname" ColumnName="LawyerSurname" />
+                <ScalarProperty Name="LawyerName" ColumnName="LawyerName" />
+                <ScalarProperty Name="LawyerMiddleName" ColumnName="LawyerMiddleName" />
+                <ScalarProperty Name="Seniority" ColumnName="Seniority" />
+                <ScalarProperty Name="DiplomaUniversity" ColumnName="DiplomaUniversity" />
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
