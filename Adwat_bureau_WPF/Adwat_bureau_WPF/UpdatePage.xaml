@@ -1,0 +1,40 @@
+﻿<Page x:Class="Adwat_bureau_WPF.UpdatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Adwat_bureau_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="434.04" d:DesignWidth="245.283018867925"
+      Title="UpdatePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.074*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="UpdateButton" Content="Изменить" Grid.Row="7" Click="UpdateButton_Click" />
+        <ComboBox x:Name="UpdateComboBox" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock1" Text="adasdas" HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock2" HorizontalAlignment="Stretch" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock4" HorizontalAlignment="Stretch" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock5" HorizontalAlignment="Stretch" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="UTextBlock6" HorizontalAlignment="Stretch" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="UTextBox1" HorizontalAlignment="Stretch" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBox x:Name="UTextBox2" HorizontalAlignment="Stretch" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBox x:Name="UTextBox3" HorizontalAlignment="Stretch" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBox x:Name="UTextBox4" HorizontalAlignment="Stretch" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <ComboBox x:Name="UCTextBox5" HorizontalAlignment="Stretch" Grid.Row="5"  VerticalAlignment="Center"/>
+        <ComboBox x:Name="UCTextBox6" HorizontalAlignment="Stretch" Grid.Row="6"  VerticalAlignment="Center"/>
+    </Grid>
+</Page>

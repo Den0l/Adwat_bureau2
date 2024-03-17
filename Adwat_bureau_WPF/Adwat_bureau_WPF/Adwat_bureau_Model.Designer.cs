@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Projects\UchebPrakt\Adwat_bureau_WPF\Adwat_bureau_WPF\Adwat_bureau_Model.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Projects\UchebPrakt\WPF\Adwat_bureau_WPF\Adwat_bureau_WPF\Adwat_bureau_Model.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

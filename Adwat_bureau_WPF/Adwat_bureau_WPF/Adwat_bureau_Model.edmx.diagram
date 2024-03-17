@@ -4,10 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="44d48047f76743f7a3359365c850639c" Name="Diagram1">
-        <EntityTypeShape EntityType="Adwat_bureauModel.Clients" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Adwat_bureauModel.Lawyer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="Adwat_bureauModel.FK__Lawyer__Client_I__52593CB8" ManuallyRouted="false" />
+      <Diagram DiagramId="44d48047f76743f7a3359365c850639c" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="Adwat_bureauModel.Clients" PointX="0.75" PointY="4.875" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Adwat_bureauModel.Lawyer" PointX="0.75" PointY="0.75" Width="1.5" IsExpanded="true" />
+        <AssociationConnector ManuallyRouted="false" Association="Adwat_bureauModel.FK__Lawyer__Client_I__52593CB8" />
+        <EntityTypeShape EntityType="Adwat_bureauModel.DiplomaUniversityTable" Width="1.5" PointX="6.5" PointY="1.375" />
+        <EntityTypeShape EntityType="Adwat_bureauModel.СourtСasesTable" Width="1.5" PointX="5.375" PointY="5.625" />
+        <AssociationConnector Association="Adwat_bureauModel.FK__Clients__СourtСa__70DDC3D8" />
+        <AssociationConnector Association="Adwat_bureauModel.FK__Lawyer__DiplomaU__05D8E0BE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

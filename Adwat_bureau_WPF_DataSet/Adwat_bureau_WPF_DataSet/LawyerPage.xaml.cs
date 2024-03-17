@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -22,11 +23,14 @@ namespace Adwat_bureau_WPF_DataSet
     public partial class LawyerPage : Page
     {
         LawyerTableAdapter lawyers = new LawyerTableAdapter();
+        
 
         public LawyerPage()
         {
             InitializeComponent();
             grid_Lawyer.ItemsSource = lawyers.GetData();
+            
         }
+        
     }
 }

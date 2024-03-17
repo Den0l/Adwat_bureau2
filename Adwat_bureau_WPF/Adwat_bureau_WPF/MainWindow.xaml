@@ -5,20 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Adwat_bureau_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1.3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.14*"/>
+            <RowDefinition Height="0.13*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.12*"/>
         </Grid.RowDefinitions>
-        
-        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="2" />
-        <Button x:Name="PageClients_Button" Content="Таблиц Клиентов" Grid.Row="0" Grid.Column="0" Click="PageClients_Button_Click"/>
-        <Button x:Name="PageLawyer_Button" Content="Таблиц Адвокатов" Grid.Row="0" Grid.Column="1" Click="PageLawyer_Button_Click"/>
-        
+
+        <Border Grid.RowSpan="3" Grid.Column="4" BorderThickness="1,0,0,0" BorderBrush="Black"/>
+
+        <Frame x:Name="PageFrameCRUD" NavigationUIVisibility="Hidden" Grid.RowSpan="3" Grid.Column="4" />
+        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="4" />
+        <Button x:Name="PageClients_Button" Content="Таблица Клиентов" Grid.Row="0" Grid.Column="0" Click="PageClients_Button_Click"/>
+        <Button x:Name="PageСourtСases_Button" Content="Таблица Судебных дел" Grid.Row="0" Grid.Column="1" Click="PageСourtСases_Button_Click"/>
+        <Button x:Name="PageLawyer_Button" Content="Таблиц Адвокатов" Grid.Row="0" Grid.Column="2" Click="PageLawyer_Button_Click"/>
+        <Button x:Name="PageDiplomaUniversity_Button" Content="Таблиц Дипломов" Grid.Row="0" Grid.Column="3" Click="PageDiplomaUniversity_Button_Click"/>
+        <Button x:Name="Create_Button" Content="Добавить" Grid.Row="2" Grid.Column="1" Click="Create_Button_Click"/>
+        <Button x:Name="Change_Button" Content="Изменить" Grid.Row="2" Grid.Column="2" Click="Change_Button_Click" />
+        <Button x:Name="Delete_Button" Content="Удалить" Grid.Row="2" Grid.Column="3" Click="Delete_Button_Click"/>
+
     </Grid>
 </Window>

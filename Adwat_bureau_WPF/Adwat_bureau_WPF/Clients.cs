@@ -24,10 +24,11 @@ namespace Adwat_bureau_WPF
         public string ClientSurname { get; set; }
         public string ClientName { get; set; }
         public string ClientMiddleName { get; set; }
-        public string СourtСases { get; set; }
         public string PhoneNumber { get; set; }
+        public Nullable<int> СourtСases_ID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lawyer> Lawyer { get; set; }
+        public virtual СourtСasesTable СourtСasesTable { private get; set; }
     }
 }

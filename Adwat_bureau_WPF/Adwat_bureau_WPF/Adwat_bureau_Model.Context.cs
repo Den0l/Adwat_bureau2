@@ -27,5 +27,7 @@ namespace Adwat_bureau_WPF
     
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Lawyer> Lawyer { get; set; }
+        public virtual DbSet<DiplomaUniversityTable> DiplomaUniversityTable { get; set; }
+        public virtual DbSet<СourtСasesTable> СourtСasesTable { get; set; }
     }
 }

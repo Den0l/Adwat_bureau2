@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Adwat_bureauModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Adwat_bureauModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="ID_Client" />
@@ -13,8 +13,15 @@
           <Property Name="ClientSurname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClientMiddleName" Type="varchar" MaxLength="50" />
-          <Property Name="СourtСases" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="СourtСases_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="DiplomaUniversityTable">
+          <Key>
+            <PropertyRef Name="ID_DiplomaUniversity" />
+          </Key>
+          <Property Name="ID_DiplomaUniversity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiplomaUniversity" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Lawyer">
           <Key>
@@ -25,10 +32,29 @@
           <Property Name="LawyerName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LawyerMiddleName" Type="varchar" MaxLength="50" />
           <Property Name="Seniority" Type="int" Nullable="false" />
-          <Property Name="DiplomaUniversity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiplomaUniversity_ID" Type="int" />
           <Property Name="Client_ID" Type="int" />
         </EntityType>
-        <Association Name="FK__Lawyer__Client_I__52593CB8">
+        <EntityType Name="СourtСasesTable">
+          <Key>
+            <PropertyRef Name="ID_CourtCases" />
+          </Key>
+          <Property Name="ID_CourtCases" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="СourtСases" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Clients__СourtСa__70DDC3D8">
+          <End Role="СourtСasesTable" Type="Self.СourtСasesTable" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="СourtСasesTable">
+              <PropertyRef Name="ID_CourtCases" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="СourtСases_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lawyer__Client_I__06CD04F7">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
           <End Role="Lawyer" Type="Self.Lawyer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -40,16 +66,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Lawyer__DiplomaU__05D8E0BE">
+          <End Role="DiplomaUniversityTable" Type="Self.DiplomaUniversityTable" Multiplicity="0..1" />
+          <End Role="Lawyer" Type="Self.Lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiplomaUniversityTable">
+              <PropertyRef Name="ID_DiplomaUniversity" />
+            </Principal>
+            <Dependent Role="Lawyer">
+              <PropertyRef Name="DiplomaUniversity_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Adwat_bureauModelContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiplomaUniversityTable" EntityType="Self.DiplomaUniversityTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lawyer" EntityType="Self.Lawyer" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Lawyer__Client_I__52593CB8" Association="Self.FK__Lawyer__Client_I__52593CB8">
+          <EntitySet Name="СourtСasesTable" EntityType="Self.СourtСasesTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clients__СourtСa__70DDC3D8" Association="Self.FK__Clients__СourtСa__70DDC3D8">
+            <End Role="СourtСasesTable" EntitySet="СourtСasesTable" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lawyer__Client_I__06CD04F7" Association="Self.FK__Lawyer__Client_I__06CD04F7">
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Lawyer" EntitySet="Lawyer" />
           </AssociationSet>
+          <AssociationSet Name="FK__Lawyer__DiplomaU__05D8E0BE" Association="Self.FK__Lawyer__DiplomaU__05D8E0BE">
+            <End Role="DiplomaUniversityTable" EntitySet="DiplomaUniversityTable" />
+            <End Role="Lawyer" EntitySet="Lawyer" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Adwat_bureauModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -61,9 +108,10 @@
           <Property Name="ClientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClientMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="СourtСases" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Lawyer" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Clients" ToRole="Lawyer" />
+          <Property Name="СourtСases_ID" Type="Int32" />
+          <NavigationProperty Name="СourtСasesTable" Relationship="Adwat_bureauModel.FK__Clients__СourtСa__70DDC3D8" FromRole="Clients" ToRole="СourtСasesTable" />
         </EntityType>
         <EntityType Name="Lawyer">
           <Key>
@@ -74,9 +122,10 @@
           <Property Name="LawyerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LawyerMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Seniority" Type="Int32" Nullable="false" />
-          <Property Name="DiplomaUniversity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Client_ID" Type="Int32" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Lawyer__Client_I__52593CB8" FromRole="Lawyer" ToRole="Clients" />
+          <Property Name="DiplomaUniversity_ID" Type="Int32" />
+          <NavigationProperty Name="DiplomaUniversityTable" Relationship="Adwat_bureauModel.FK__Lawyer__DiplomaU__05D8E0BE" FromRole="Lawyer" ToRole="DiplomaUniversityTable" />
         </EntityType>
         <Association Name="FK__Lawyer__Client_I__52593CB8">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
@@ -97,7 +146,57 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="Lawyer" EntitySet="Lawyer" />
           </AssociationSet>
+          <EntitySet Name="DiplomaUniversityTable" EntityType="Adwat_bureauModel.DiplomaUniversityTable" />
+          <EntitySet Name="СourtСasesTable" EntityType="Adwat_bureauModel.СourtСasesTable" />
+          <AssociationSet Name="FK__Clients__СourtСa__70DDC3D8" Association="Adwat_bureauModel.FK__Clients__СourtСa__70DDC3D8">
+            <End Role="СourtСasesTable" EntitySet="СourtСasesTable" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Lawyer__DiplomaU__05D8E0BE" Association="Adwat_bureauModel.FK__Lawyer__DiplomaU__05D8E0BE">
+            <End Role="DiplomaUniversityTable" EntitySet="DiplomaUniversityTable" />
+            <End Role="Lawyer" EntitySet="Lawyer" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="DiplomaUniversityTable">
+          <Key>
+            <PropertyRef Name="ID_DiplomaUniversity" />
+          </Key>
+          <Property Name="ID_DiplomaUniversity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiplomaUniversity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Lawyer" Relationship="Adwat_bureauModel.FK__Lawyer__DiplomaU__05D8E0BE" FromRole="DiplomaUniversityTable" ToRole="Lawyer" />
+        </EntityType>
+        <EntityType Name="СourtСasesTable">
+          <Key>
+            <PropertyRef Name="ID_CourtCases" />
+          </Key>
+          <Property Name="ID_CourtCases" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="СourtСases" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clients" Relationship="Adwat_bureauModel.FK__Clients__СourtСa__70DDC3D8" FromRole="СourtСasesTable" ToRole="Clients" />
+        </EntityType>
+        <Association Name="FK__Clients__СourtСa__70DDC3D8">
+          <End Type="Adwat_bureauModel.СourtСasesTable" Role="СourtСasesTable" Multiplicity="0..1" />
+          <End Type="Adwat_bureauModel.Clients" Role="Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="СourtСasesTable">
+              <PropertyRef Name="ID_CourtCases" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="СourtСases_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Lawyer__DiplomaU__05D8E0BE">
+          <End Type="Adwat_bureauModel.DiplomaUniversityTable" Role="DiplomaUniversityTable" Multiplicity="0..1" />
+          <End Type="Adwat_bureauModel.Lawyer" Role="Lawyer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiplomaUniversityTable">
+              <PropertyRef Name="ID_DiplomaUniversity" />
+            </Principal>
+            <Dependent Role="Lawyer">
+              <PropertyRef Name="DiplomaUniversity_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -107,11 +206,11 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="Adwat_bureauModel.Clients">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="СourtСases_ID" ColumnName="СourtСases_ID" />
                 <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
                 <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
-                <ScalarProperty Name="СourtСases" ColumnName="СourtСases" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -119,13 +218,29 @@
           <EntitySetMapping Name="Lawyer">
             <EntityTypeMapping TypeName="Adwat_bureauModel.Lawyer">
               <MappingFragment StoreEntitySet="Lawyer">
+                <ScalarProperty Name="DiplomaUniversity_ID" ColumnName="DiplomaUniversity_ID" />
                 <ScalarProperty Name="ID_Lawyer" ColumnName="ID_Lawyer" />
                 <ScalarProperty Name="LawyerSurname" ColumnName="LawyerSurname" />
                 <ScalarProperty Name="LawyerName" ColumnName="LawyerName" />
                 <ScalarProperty Name="LawyerMiddleName" ColumnName="LawyerMiddleName" />
                 <ScalarProperty Name="Seniority" ColumnName="Seniority" />
-                <ScalarProperty Name="DiplomaUniversity" ColumnName="DiplomaUniversity" />
                 <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiplomaUniversityTable">
+            <EntityTypeMapping TypeName="Adwat_bureauModel.DiplomaUniversityTable">
+              <MappingFragment StoreEntitySet="DiplomaUniversityTable">
+                <ScalarProperty Name="DiplomaUniversity" ColumnName="DiplomaUniversity" />
+                <ScalarProperty Name="ID_DiplomaUniversity" ColumnName="ID_DiplomaUniversity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="СourtСasesTable">
+            <EntityTypeMapping TypeName="Adwat_bureauModel.СourtСasesTable">
+              <MappingFragment StoreEntitySet="СourtСasesTable">
+                <ScalarProperty Name="СourtСases" ColumnName="СourtСases" />
+                <ScalarProperty Name="ID_CourtCases" ColumnName="ID_CourtCases" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

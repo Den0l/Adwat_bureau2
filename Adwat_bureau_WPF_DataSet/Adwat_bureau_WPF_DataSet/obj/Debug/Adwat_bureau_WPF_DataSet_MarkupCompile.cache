@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Projects\UchebPrakt\Adwat_bureau_WPF_DataSet\Adwat_bureau_WPF_DataSet\obj\Debug\
+C:\Projects\UchebPrakt\WPF\Adwat_bureau_WPF_DataSet\Adwat_bureau_WPF_DataSet\obj\Debug\
 Adwat_bureau_WPF_DataSet
 none
 false
 DEBUG;TRACE
-C:\Projects\UchebPrakt\Adwat_bureau_WPF_DataSet\Adwat_bureau_WPF_DataSet\App.xaml
-3-1165407727
+C:\Projects\UchebPrakt\WPF\Adwat_bureau_WPF_DataSet\Adwat_bureau_WPF_DataSet\App.xaml
+8-936582668
 
-81026839619
+13-766104172
 13-38814620
-ClientsPage.xaml;LawyerPage.xaml;MainWindow.xaml;
+ClientsPage.xaml;CourtCasesPage.xaml;CreatePage.xaml;DeletePage.xaml;DiplomaUniversityPage.xaml;LawyerPage.xaml;MainWindow.xaml;UpdatePage.xaml;
 
 False
 
