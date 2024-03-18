@@ -54,6 +54,10 @@ namespace Adwat_bureau_WPF_DataSet
             {
                 
                 clientsAdap.InsertQuery(CTextBox2.Text, CTextBox1.Text, CTextBox3.Text, CTextBox4.Text, CTextBox5.SelectedIndex+1);
+                ClientsPage newPage = new ClientsPage();
+                newPage.grid_Clients.ItemsSource = clientsAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if(choice == "LawyerPage")
             {
@@ -68,14 +72,26 @@ namespace Adwat_bureau_WPF_DataSet
                 }
                 
                 lawyerAdap.InsertQuery(CTextBox1.Text, CTextBox2.Text, CTextBox3.Text, Seniority, CTextBox5.SelectedIndex+1, CTextBox6.SelectedIndex+1);
+                LawyerPage newPage = new LawyerPage();
+                newPage.grid_Lawyer.ItemsSource = lawyerAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "DiplomaUniversityPage")
             {
                 diplomaAdap.InsertQuery(CTextBox1.Text);
+                DiplomaUniversityPage newPage = new DiplomaUniversityPage();
+                newPage.grid_DiplomaUniversity.ItemsSource = diplomaAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "CourtCasesPage")
             {
                 courtCasesAdap.InsertQuery(CTextBox1.Text);
+                CourtCasesPage newPage = new CourtCasesPage();
+                newPage.grid_CourtCases.ItemsSource = courtCasesAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             
             
