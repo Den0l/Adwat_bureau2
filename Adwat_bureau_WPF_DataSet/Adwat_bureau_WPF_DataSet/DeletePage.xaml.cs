@@ -45,6 +45,10 @@ namespace Adwat_bureau_WPF_DataSet
                 clientsAdap.DeleteQuery(Convert.ToInt32(id));
                 }
                 catch { return; }
+                ClientsPage newPage = new ClientsPage();
+                newPage.grid_Clients.ItemsSource = clientsAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "LawyerPage")
             {
@@ -52,6 +56,10 @@ namespace Adwat_bureau_WPF_DataSet
                 lawyerAdap.DeleteQuery(Convert.ToInt32(id));
                 }
                 catch { return; }
+                LawyerPage newPage = new LawyerPage();
+                newPage.grid_Lawyer.ItemsSource = lawyerAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "DiplomaUniversityPage")
             {
@@ -60,6 +68,10 @@ namespace Adwat_bureau_WPF_DataSet
                 diplomaAdap.DeleteQuery(Convert.ToInt32(id));
                 }
                 catch { return; }
+                DiplomaUniversityPage newPage = new DiplomaUniversityPage();
+                newPage.grid_DiplomaUniversity.ItemsSource = diplomaAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "CourtCasesPage")
             {
@@ -68,6 +80,10 @@ namespace Adwat_bureau_WPF_DataSet
                     courtCasesAdap.DeleteQuery(Convert.ToInt32(id));
                 }
                 catch { return; }
+                CourtCasesPage newPage = new CourtCasesPage();
+                newPage.grid_CourtCases.ItemsSource = courtCasesAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
         
         }
