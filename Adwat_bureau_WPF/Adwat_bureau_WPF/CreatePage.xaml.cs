@@ -58,8 +58,10 @@ namespace Adwat_bureau_WPF
 
                 context.Clients.Add(c);
                 context.SaveChanges();
-                clientsPage.grid_Clients.ItemsSource  = context.Clients.ToList();
-
+                 ClientsPage newPage = new ClientsPage();
+                 newPage.grid_Clients.ItemsSource = context.Clients.ToList();
+                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                 mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "LawyerPage")
             {
@@ -83,7 +85,10 @@ namespace Adwat_bureau_WPF
 
                 context.Lawyer.Add(l);
                 context.SaveChanges();
-                lawyerPage.grid_Lawyer.ItemsSource = context.Lawyer.ToList();
+                LawyerPage newPage = new LawyerPage();
+                newPage.grid_Lawyer.ItemsSource = context.Lawyer.ToList();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
 
             }
             else if (choice == "DiplomaUniversityPage")
@@ -93,7 +98,10 @@ namespace Adwat_bureau_WPF
 
                 context.DiplomaUniversityTable.Add(d);
                 context.SaveChanges();
-                diplomaUniversityPage.grid_DiplomaUniversity.ItemsSource = context.DiplomaUniversityTable.ToList();
+                DiplomaUniversityPage newPage = new DiplomaUniversityPage();
+                newPage.grid_DiplomaUniversity.ItemsSource = context.DiplomaUniversityTable.ToList();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "CourtCasesPage")
             {
@@ -102,7 +110,10 @@ namespace Adwat_bureau_WPF
 
                 context.СourtСasesTable.Add(cc);
                 context.SaveChanges();
-                courtCasesPage.grid_CourtCases.ItemsSource = context.СourtСasesTable.ToList();
+                CourtCasesPage newPage = new CourtCasesPage();
+                newPage.grid_CourtCases.ItemsSource = context.СourtСasesTable.ToList();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             
         }
