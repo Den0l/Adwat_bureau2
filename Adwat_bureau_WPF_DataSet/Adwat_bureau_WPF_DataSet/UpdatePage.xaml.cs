@@ -51,6 +51,10 @@ namespace Adwat_bureau_WPF_DataSet
             if (choice == "ClientsPage")
             {
                 clientsAdap.UpdateQuery(UTextBox2.Text, UTextBox1.Text, UTextBox3.Text, UTextBox4.Text, UCTextBox5.SelectedIndex + 1, Convert.ToInt32(id));
+                 ClientsPage newPage = new ClientsPage();
+                 newPage.grid_Clients.ItemsSource = clientsAdap.GetData();
+                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                 mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "LawyerPage")
             {
@@ -65,14 +69,26 @@ namespace Adwat_bureau_WPF_DataSet
                 }
 
                 lawyerAdap.UpdateQuery(UTextBox1.Text, UTextBox2.Text, UTextBox3.Text, Seniority, UCTextBox5.SelectedIndex + 1, UCTextBox6.SelectedIndex + 1, Convert.ToInt32(id));
+                LawyerPage newPage = new LawyerPage();
+                newPage.grid_Lawyer.ItemsSource = lawyerAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "DiplomaUniversityPage")
             {
                 diplomaAdap.UpdateQuery(UTextBox1.Text, Convert.ToInt32(id));
+                 DiplomaUniversityPage newPage = new DiplomaUniversityPage();
+                 newPage.grid_DiplomaUniversity.ItemsSource = diplomaAdap.GetData();
+                 MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                 mainWindow.PageFrame.Navigate(newPage);
             }
             else if (choice == "CourtCasesPage")
             {
                 courtCasesAdap.UpdateQuery(UTextBox1.Text, Convert.ToInt32(id));
+                CourtCasesPage newPage = new CourtCasesPage();
+                newPage.grid_CourtCases.ItemsSource = courtCasesAdap.GetData();
+                MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                mainWindow.PageFrame.Navigate(newPage);
             }
         }
     }
